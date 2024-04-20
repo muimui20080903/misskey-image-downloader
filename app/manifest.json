@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "misskey-image-downloader",
+    "short_name": "MisskeyImgDL",
+    "version": "1.0.0",
+    "description": "Download images on Misskey",
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "background": {
+        "service_worker": "scripts/background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://misskey.io/*",
+                "https://social.sda1.net/*"
+            ],
+            "js": [
+                "scripts/getImageInfo.js",
+                "scripts/jquery-3.7.1.min.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "contextMenus",
+        "downloads"
+    ],
+    "host_permissions": [
+        "https://misskey.io/",
+        "https://social.sda1.net/"
+    ]
+}
